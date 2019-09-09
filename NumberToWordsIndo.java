@@ -17,7 +17,8 @@ public class EndGoals extends JFrame implements ActionListener {
     JFrame frame = new JFrame("Angka ke Kalimat");
     JLabel label; JFormattedTextField textField; JTextArea textArea; 
 
-    String translator10(long number) {
+    String translator10(Double number1) {
+        Double number = Math.floor(number1);
         if(number == 1) return "Satu ";
         if(number == 2) return "Dua ";
         if(number == 3) return "Tiga ";
@@ -40,33 +41,81 @@ public class EndGoals extends JFrame implements ActionListener {
         return "";
     }
 
-    String translators(long number){
+    Double power(double number, double times){
+        double result = 1D;
+        for(int i = 0; i < times; i++){
+           result *= number;
+        }
+        return result;
+    }
+
+    String translators(Double number){
         var word = "";
-        long temp = number;
+        Double temp = number;
         if(number == 0){
             return "Nol";
         }
-        if(number > 999999999999999999L){
-            word += translator(number / 1000000000000000000L) + "Kuintiliun ";
-            number%=1000000000000000000L;
+        if(number >= power(10, 48)){
+            word += translator(number / power(10, 48)) + "Kuindesiliun ";
+            number%=power(10, 48);
         }
-        if(number > 999999999999999L){
-            word += translator(number / 1000000000000000L) + "Kuadriliun ";
-            number%=1000000000000000L;
+        if(number >= power(10, 45)){
+            word += translator(number / power(10, 45)) + "Kuatuordesiliun ";
+            number%=power(10, 45);
         }
-        if(number > 999999999999L){
-            word += translator(number / 1000000000000L) + "Triliun ";
-            number%=1000000000000L;
+        if(number >= power(10, 42)){
+            word += translator(number / power(10, 42)) + "Tredesiliun ";
+            number%=power(10, 42);
         }
-        if(number > 999999999){
-            word += translator(number / 1000000000) + "Miliar ";
-            number%=1000000000;
+        if(number >= power(10, 39)){
+            word += translator(number / power(10, 39)) + "Duodesiliun ";
+            number%=power(10, 39);
         }
-        if(number > 999999){
-            word += translator(number / 1000000) + "Juta ";
-            number%=1000000;
+        if(number >= power(10, 36)){
+            word += translator(number / power(10, 36)) + "Undesiliun ";
+            number%=power(10, 36);
         }
-        if(number > 999){
+        if(number >= power(10, 33)){
+            word += translator(number / power(10, 33)) + "Desiliun ";
+            number%=power(10, 33);
+        }
+        if(number >= power(10, 30)){
+            word += translator(number / power(10, 30)) + "Noniliun ";
+            number%=power(10, 30);
+        }
+        if(number >= power(10, 27)){
+            word += translator(number / power(10, 27)) + "Oktiliun ";
+            number%=power(10, 27);
+        }
+        if(number >= power(10, 24)){
+            word += translator(number / power(10, 24)) + "Septiliun ";
+            number%=power(10, 24);
+        }
+        if(number >= power(10, 21)){
+            word += translator(number / power(10, 21)) + "Sekstiliun ";
+            number%=power(10, 21);
+        }
+        if(number >= power(10, 18)){
+            word += translator(number / power(10, 18)) + "Kuintiliun ";
+            number%=power(10, 18);
+        }
+        if(number >= power(10, 15)){
+            word += translator(number / power(10, 15)) + "Kuadriliun ";
+            number%=power(10, 15);
+        }
+        if(number >= power(10, 12)){
+            word += translator(number / power(10, 12)) + "Triliun ";
+            number%=power(10, 12);
+        }
+        if(number >= power(10, 9)){
+            word += translator(number / power(10, 9)) + "Miliar ";
+            number%=power(10, 9);
+        }
+        if(number >= power(10, 6)){
+            word += translator(number / power(10, 6)) + "Juta ";
+            number%=power(10, 6);
+        }
+        if(number >= 1000){
             if(1000 <= number && number <= 1999 && temp <= 1999){
                 word += "Seribu ";
             }
@@ -78,7 +127,7 @@ public class EndGoals extends JFrame implements ActionListener {
         return word += translator(number);
     }
     //fungsi seribu dibuat di fungsi untuk seribuan, jutaan, miliaran, dst.
-    String translator(long number){
+    String translator(Double number){
         String word = "";
         if(number > 99){
             if(100 <= number && number <= 199){
@@ -160,7 +209,7 @@ public class EndGoals extends JFrame implements ActionListener {
     }
 
     public void set(){
-        textArea.setText(translators(Long.parseLong(textField.getText())));
+        textArea.setText(translators(Double.parseDouble(textField.getText())));
     }
 
     @Override
