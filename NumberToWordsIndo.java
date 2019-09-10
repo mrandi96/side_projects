@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.math.*;
 
 import java.awt.event.*;
 
@@ -17,8 +18,7 @@ public class EndGoals extends JFrame implements ActionListener {
     JFrame frame = new JFrame("Angka ke Kalimat");
     JLabel label; JFormattedTextField textField; JTextArea textArea; 
 
-    String translator10(Double number1) {
-        Double number = Math.floor(number1);
+    String translator10(int number) {
         if(number == 1) return "Satu ";
         if(number == 2) return "Dua ";
         if(number == 3) return "Tiga ";
@@ -41,96 +41,89 @@ public class EndGoals extends JFrame implements ActionListener {
         return "";
     }
 
-    Double power(double number, double times){
-        double result = 1D;
-        for(int i = 0; i < times; i++){
-           result *= number;
-        }
-        return result;
-    }
-
-    String translators(Double number){
+    String translators(String number1){
+        BigInteger number = new BigInteger(number1), temp = number;
         var word = "";
-        Double temp = number;
-        if(number == 0){
+        if(number.equals(new BigInteger("0"))){
             return "Nol";
         }
-        if(number >= power(10, 48)){
-            word += translator(number / power(10, 48)) + "Kuindesiliun ";
-            number%=power(10, 48);
+        if(number.compareTo(new BigInteger("10").pow(48)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(48)).intValue())+ "Kuindesiliun ";
+            number = number.mod(new BigInteger("10").pow(48));
         }
-        if(number >= power(10, 45)){
-            word += translator(number / power(10, 45)) + "Kuatuordesiliun ";
-            number%=power(10, 45);
+        if(number.compareTo(new BigInteger("10").pow(45)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(45)).intValue())+ "Kuatuordesiliun ";
+            number = number.mod(new BigInteger("10").pow(45));
         }
-        if(number >= power(10, 42)){
-            word += translator(number / power(10, 42)) + "Tredesiliun ";
-            number%=power(10, 42);
+        if(number.compareTo(new BigInteger("10").pow(42)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(42)).intValue())+ "Tredesiliun ";
+            number = number.mod(new BigInteger("10").pow(42));
         }
-        if(number >= power(10, 39)){
-            word += translator(number / power(10, 39)) + "Duodesiliun ";
-            number%=power(10, 39);
+        if(number.compareTo(new BigInteger("10").pow(39)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(39)).intValue())+ "Duodesiliun ";
+            number = number.mod(new BigInteger("10").pow(39));
         }
-        if(number >= power(10, 36)){
-            word += translator(number / power(10, 36)) + "Undesiliun ";
-            number%=power(10, 36);
+        if(number.compareTo(new BigInteger("10").pow(36)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(36)).intValue())+ "Undesiliun ";
+            number = number.mod(new BigInteger("10").pow(36));
         }
-        if(number >= power(10, 33)){
-            word += translator(number / power(10, 33)) + "Desiliun ";
-            number%=power(10, 33);
+        if(number.compareTo(new BigInteger("10").pow(33)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(33)).intValue())+ "Desiliun ";
+            number = number.mod(new BigInteger("10").pow(33));
         }
-        if(number >= power(10, 30)){
-            word += translator(number / power(10, 30)) + "Noniliun ";
-            number%=power(10, 30);
+        if(number.compareTo(new BigInteger("10").pow(30)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(30)).intValue())+ "Noniliun ";
+            number = number.mod(new BigInteger("10").pow(30));
         }
-        if(number >= power(10, 27)){
-            word += translator(number / power(10, 27)) + "Oktiliun ";
-            number%=power(10, 27);
+        if(number.compareTo(new BigInteger("10").pow(27)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(27)).intValue())+ "Oktiliun ";
+            number = number.mod(new BigInteger("10").pow(27));
         }
-        if(number >= power(10, 24)){
-            word += translator(number / power(10, 24)) + "Septiliun ";
-            number%=power(10, 24);
+        if(number.compareTo(new BigInteger("10").pow(24)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(24)).intValue())+ "Septiliun ";
+            number = number.mod(new BigInteger("10").pow(24));
         }
-        if(number >= power(10, 21)){
-            word += translator(number / power(10, 21)) + "Sekstiliun ";
-            number%=power(10, 21);
+        if(number.compareTo(new BigInteger("10").pow(21)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(21)).intValue())+ "Sekstiliun ";
+            number = number.mod(new BigInteger("10").pow(21));
         }
-        if(number >= power(10, 18)){
-            word += translator(number / power(10, 18)) + "Kuintiliun ";
-            number%=power(10, 18);
+        if(number.compareTo(new BigInteger("10").pow(18)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(18)).intValue())+ "Kuintiliun ";
+            number = number.mod(new BigInteger("10").pow(18));
         }
-        if(number >= power(10, 15)){
-            word += translator(number / power(10, 15)) + "Kuadriliun ";
-            number%=power(10, 15);
+        if(number.compareTo(new BigInteger("10").pow(15)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(15)).intValue())+ "Kuadriliun ";
+            number = number.mod(new BigInteger("10").pow(15));
         }
-        if(number >= power(10, 12)){
-            word += translator(number / power(10, 12)) + "Triliun ";
-            number%=power(10, 12);
+        if(number.compareTo(new BigInteger("10").pow(12)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(12)).intValue())+ "Triliun ";
+            number = number.mod(new BigInteger("10").pow(12));
         }
-        if(number >= power(10, 9)){
-            word += translator(number / power(10, 9)) + "Miliar ";
-            number%=power(10, 9);
+        if(number.compareTo(new BigInteger("10").pow(9)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(9)).intValue())+ "Miliar ";
+            number = number.mod(new BigInteger("10").pow(9));
         }
-        if(number >= power(10, 6)){
-            word += translator(number / power(10, 6)) + "Juta ";
-            number%=power(10, 6);
+        if(number.compareTo(new BigInteger("10").pow(6)) >= 0){
+            word += translator(number.divide(new BigInteger("10").pow(6)).intValue())+ "Juta ";
+            number = number.mod(new BigInteger("10").pow(6));
         }
-        if(number >= 1000){
-            if(1000 <= number && number <= 1999 && temp <= 1999){
+        int number2 = number.intValue();
+        if(number2 >= 1000){
+            if(1000 <= number2 && number2 < 2000 && temp.compareTo(new BigInteger("2000")) == -1){
                 word += "Seribu ";
             }
             else{
-            word += translator(number / 1000) + "Ribu ";
+            word += translator(number.divide(new BigInteger("1000")).intValue()) + "Ribu ";
             }
-            number%=1000;
+            number = number.mod(new BigInteger("1000"));
         }
-        return word += translator(number);
+        return word += translator(number.intValue());
     }
-    //fungsi seribu dibuat di fungsi untuk seribuan, jutaan, miliaran, dst.
-    String translator(Double number){
+
+    String translator(int number){
         String word = "";
-        if(number > 99){
-            if(100 <= number && number <= 199){
+        if(number >= 100){
+            if(100 <= number && number < 200){
                 word += "Seratus ";
             }
             else{
@@ -138,7 +131,7 @@ public class EndGoals extends JFrame implements ActionListener {
             }
             number%=100;
         }
-        if(number > 19){ 
+        if(number >= 20){ 
             word += translator10(number / 10) + "Puluh ";
             number%=10;
         }
@@ -209,7 +202,7 @@ public class EndGoals extends JFrame implements ActionListener {
     }
 
     public void set(){
-        textArea.setText(translators(Double.parseDouble(textField.getText())));
+        textArea.setText(translators(textField.getText()));
     }
 
     @Override
