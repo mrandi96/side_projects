@@ -8,7 +8,7 @@ import java.awt.event.*;
 /**
  * EndGoals
  */
-public class EndGoals extends JFrame implements ActionListener {
+public class NumberToWordsIndo extends JFrame implements ActionListener {
 
     /**
      *
@@ -138,7 +138,7 @@ public class EndGoals extends JFrame implements ActionListener {
         return word += translator10(number);
     }
 
-    EndGoals(){
+    NumberToWordsIndo(){
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(width, height);
         frame.setLayout(null);
@@ -198,7 +198,7 @@ public class EndGoals extends JFrame implements ActionListener {
         
     }
     public static void main(String[] args) {
-       new EndGoals();
+       new NumberToWordsIndo();
     }
 
     public void set(){
